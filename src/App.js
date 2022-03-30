@@ -1,7 +1,7 @@
 import './App.css';
 import NavBar from './Component/NavBar.js'
 import ItemListContainer from './Component/ItemListContainer/ItemListContainer'
-import Counter from './Counter';
+import ItemCount from './Component/ItemCount/ItemCount';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         </div>
         <div className='productoNombre'>
           <h2>Tira de Asado (1 kg.)</h2>
-          <div className='counterDiv'><Counter/></div>
+          <div className='counterDiv'><ItemCount/></div>
         </div>
       </div>
     </div>

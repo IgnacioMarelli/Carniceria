@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import './ItemCount.css';
 
-const Counter = () => {
+const ItemCount = () => {
     const [count, setCount] = useState(1);
     const [agrego, setAgrego] = useState(false);
 
@@ -33,4 +34,4 @@ const Counter = () => {
 
 }
 
-export default Counter
+export default ItemCount
