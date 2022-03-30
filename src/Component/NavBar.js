@@ -4,7 +4,7 @@ import CartWidget from './CartWidget/CartWidget';
 const NavBar = ()=> {
     return <nav>
         <a className='Logo'>Carnes Avenida</a>
-        <ul >
+        <ul className='bg-dark' >
             <a><li>Ternera</li></a>
             <a><li>Cerdo</li></a>
             <a><li>Embutido</li></a>
