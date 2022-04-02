@@ -1,34 +1,40 @@
 
 body{
   color: azure;
-  background: linear-gradient(to bottom right, #ed213a, #93291e, black);
+  background: linear-gradient(to bottom right,   #333333,  #dd1818);
   height: 70rem;
+  font-family: 'Teko', sans-serif;
+  font-size: 2.2rem;
 }
-
-.divProducto{
-  background-color: black;
-  display:flex;
-  width: 80%;
-  margin-left: 10%;
-  
+h2{
+  font-size: 2.5rem;
+}
+h1{
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 .productoNombre{
-  padding-left: 25%;
+  align-self: center;
+  width: 60%;
+  display: grid;
+}
+.nombre{
+  text-align-last: center;
+}
+section{
+  display:flex;
+  padding: 1rem 0rem 1rem 1rem;
+  margin-bottom: 1rem;
+  background-color: black;
+  box-shadow: 0rem 0.2rem 1rem 1rem rgb(0 0 0 / 30%)
 }
 
 .item_image{
-  width: 15rem;
-  height: 10rem;
+  width: 25rem; 
+  box-shadow: 0px 0px 5px 5px #5d2027;
 }
 .productoImagen{
     width: 100%;
     height: 100%;
-}
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

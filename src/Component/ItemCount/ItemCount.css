@@ -5,6 +5,7 @@
     background-color: #93291e;
     transition: all 150ms ease-in-out;
     height: 3rem;
+    width: 10rem;
     font-size: 1.2rem;
     align-self: center;
     text-align: -webkit-center;
@@ -19,5 +20,5 @@
     height: 100%;
 }
 .counterDiv{
-    margin-left: 25%;
+    justify-self: center;
 }
