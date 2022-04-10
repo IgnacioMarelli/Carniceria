@@ -19,6 +19,13 @@ const products = [
         category:'cerdo',
         img:'./Media/bondiola.jpg',
         stock:10
+    },
+    {
+        id:4,
+        name:'Chorizo Mezcla',
+        category:'Embutido',
+        img:'./Media/chorizoMezcla.jpg',
+        stock:10
     }
 ]
 
@@ -26,6 +33,14 @@ export const getProducts = () =>{
     return new Promise (resolve=>{
         setTimeout(()=>{
             resolve(products)
+        },2000)
+    })
+}
+
+export const getItem = (id) =>{
+    return new Promise (resolve=>{
+        setTimeout(()=>{
+            resolve(products.find(prod=> prod.id === id))
         },2000)
     })
 }
