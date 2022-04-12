@@ -19,7 +19,7 @@ const NavBar = ()=> {
     return <nav>
         <Link to={`/`} className='Logo'>Carnes Avenida</Link>
         <ul className='bg-dark' >
-            {categories.map(cate=> <Link to={`category/${cate.id}`}><li>{cate.description}</li></Link>)}
+            {categories.map(cate=> <Link key={cate.id} to={`category/${cate.id}`}><li>{cate.description}</li></Link>)}
             <CartWidget/>
         </ul>
  
