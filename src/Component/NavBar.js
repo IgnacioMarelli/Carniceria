@@ -1,14 +1,25 @@
-import './NavBar.css';
-import CartWidget from './CartWidget/CartWidget';
+import './NavBar.css'
+import CartWidget from './CartWidget/CartWidget'
+import { getCategories} from './asyncmock'
+import { Link } from 'react-router-dom'
+import {useState, useEffect } from 'react'
 
 const NavBar = ()=> {
+    const [categories, setCategories] =useState([])
+
+
+    useEffect(()=>{
+        getCategories().then(categories=>{
+            setCategories(categories)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }, [])
+
     return <nav>
-        <a className='Logo'>Carnes Avenida</a>
+        <Link to={`/`} className='Logo'>Carnes Avenida</Link>
         <ul className='bg-dark' >
-            <a><li>Ternera</li></a>
-            <a><li>Cerdo</li></a>
-            <a><li>Embutido</li></a>
-            <a><li>Achuras</li></a>
+            {categories.map(cate=> <Link to={`category/${cate.id}`}><li>{cate.description}</li></Link>)}
             <CartWidget/>
         </ul>
  
