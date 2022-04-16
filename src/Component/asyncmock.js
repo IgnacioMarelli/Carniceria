@@ -26,6 +26,13 @@ const products = [
         category:'Embutidos',
         img:'https://i.imgur.com/Mv6D3Xx.jpg',
         stock:10
+    },
+    {
+        id:5,
+        name:'Chinchulin',
+        category:'Achuras',
+        img:'https://www.saboresdelaestancia.com.ar/wp-content/uploads/2019/06/chinchulines-ternera.jpg',
+        stock:10
     }
 ]
 
