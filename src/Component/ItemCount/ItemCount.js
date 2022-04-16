@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './ItemCount.css'
 
 const ItemCount = ({onAdd, stock}) => {
@@ -9,12 +9,13 @@ const ItemCount = ({onAdd, stock}) => {
         setCount(count-1);
     }
     if (count<0) {
-        setCount(1);
+        setCount(0);
         //setAgrego(false)
     }
     const increment= () =>{
         if (count<stock) {
            setCount(count+1)
+           
         }
     }
     //const cambiar=()=>{

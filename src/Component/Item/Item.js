@@ -1,6 +1,6 @@
 import ItemCount from "../ItemCount/ItemCount"
 import { Link } from "react-router-dom"
-const Item = ({id, name, img}) => {
+const Item = ({id, name, img, stock}) => {
     return(
         <section>
             <div className='item_image'>
@@ -9,7 +9,7 @@ const Item = ({id, name, img}) => {
             <div className='productoNombre'>
                 <h2 className="nombre">{name}</h2>
                 <Link to={`/detail/${id}`}><h2 className="nombre">Ver detalle</h2></Link>
-                <div className='counterDiv'><ItemCount/></div>
+                <div className='counterDiv'><ItemCount stock={stock}/></div>
             </div>
         </section>
     )
