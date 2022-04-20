@@ -3,6 +3,7 @@ const products = [
         id:1,
         name: 'Asado',
         category:'Ternera',
+        price:1600,
         img:'https://i.imgur.com/fGV94R8.jpg',
         stock: 10
     },
@@ -10,6 +11,7 @@ const products = [
         id:2,
         name:'Vacio',
         category:'Ternera',
+        price:1000,
         img:'https://i.imgur.com/YK0uyD9.jpg',
         stock:10
     },
@@ -17,6 +19,7 @@ const products = [
         id:3,
         name:'Bondiola',
         category:'Otras Carnes',
+        price:950,
         img:'https://i.imgur.com/1neiBxm.jpeg',
         stock:10
     },
@@ -24,12 +27,14 @@ const products = [
         id:4,
         name:'Chorizo Mezcla',
         category:'Embutidos',
+        price:150,
         img:'https://i.imgur.com/Mv6D3Xx.jpg',
         stock:10
     },
     {
         id:5,
         name:'Chinchulin',
+        price:200,
         category:'Achuras',
         img:'https://www.saboresdelaestancia.com.ar/wp-content/uploads/2019/06/chinchulines-ternera.jpg',
         stock:10

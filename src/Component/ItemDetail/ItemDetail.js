@@ -1,15 +1,17 @@
 import ItemCount from "../ItemCount/ItemCount"
-import { useState} from "react"
+import { useContext} from "react"
 import { Link } from 'react-router-dom'
+import CartContext from "../context/CartContext"
 
-const ItemDetail = ({img, name, category, stock}) => {
-    const [quantity, setQuantity]= useState(0)
-    
-    
-    const onAdd = (count)=>{
-        setQuantity(count)
+const ItemDetail = ({id, img, name, price, category, stock}) => {
+    const {addItem, isInCart}= useContext(CartContext)
+    const handleOnAdd = (count)=>{
+        const productObj={
+            id,name,price
+        }
+        addItem({...productObj, quantity:count})
     }
-
+    
     return(
         <section>
             <div className='item_image'>
@@ -19,7 +21,7 @@ const ItemDetail = ({img, name, category, stock}) => {
                 <h2 className="nombre">{name}</h2>
                 <h2 className="nombre">Tipo de carne:{category}</h2>
                 <h2 className="nombre">Stock:{stock}kg</h2>
-                <div className='counterDiv'>{quantity > 1 ? <Link to ='/cart'><h1>Ir al Carrito</h1></Link> : <ItemCount onAdd={onAdd} stock={stock}/>}</div>
+                <div className='counterDiv'>{isInCart(id) > 0 ? <Link to ='/cart'>Ir al Carrito</Link> : <ItemCount onAdd={handleOnAdd} stock={stock}/>}</div>
             </div>
         </section>
     )

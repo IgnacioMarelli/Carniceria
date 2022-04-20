@@ -3,7 +3,7 @@ import {useState, useEffect } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
 
-const ItemListDetail = () =>{
+const ItemListDetail = ({setCart}) =>{
     const [products, setproducts] =useState()
     const [loading, setLoading] = useState(true)
 
