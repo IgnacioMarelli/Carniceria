@@ -15,11 +15,20 @@ export const CartContextProvider = ({children, name, price})=>{
         return cart.some(prod=> prod.id === id)
     }
 
+    const noRepetir=(prods, prodsRepetido)=>{
+        prods.quantity+=prodsRepetido.quantinty
+        removeItem(prodsRepetido.id)
+    }
 
     
     
     const addItem=(productToAdd)=>{
         setCart([...cart, productToAdd])
+        cart.forEach(prods=>{
+            const prodsRepetido= cart.filter(producto => producto.id === prods)
+            console.log(prodsRepetido)
+            prodsRepetido? noRepetir(prods, prodsRepetido) : console.log(prods)
+        })
     }
    //console.log(cart)
     const getQuantity= ()=>{
