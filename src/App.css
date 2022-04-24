@@ -2,7 +2,7 @@
 body{
   color: azure;
   background: linear-gradient(to bottom right,   #333333,  #dd1818);
-  height: 70rem;
+  height: 100%;
   font-family: 'Teko', sans-serif;
   font-size: 2.2rem;
 }
