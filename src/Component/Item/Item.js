@@ -4,11 +4,12 @@ import { useContext} from "react"
 import CartContext from "../context/CartContext"
 
 const Item = ({id, name, img, stock, price}) => {
-    const {addItem}= useContext(CartContext)
+    const {addItem, isInCart, removeItem}= useContext(CartContext)
     const handleOnAdd = (count)=>{
         const productObj={
             id,name,price, img
         }
+        
         addItem({...productObj, quantity:count})
     }
 
@@ -20,7 +21,7 @@ const Item = ({id, name, img, stock, price}) => {
             <div className='productoNombre'>
                 <h2 className="nombre">{name}</h2>
                 <Link to={`/detail/${id}`}><h2 className="nombre">Ver detalle</h2></Link>
-                <div className='counterDiv'><ItemCount onAdd={handleOnAdd} stock={stock}/></div>
+                <div className='counterDiv'>{isInCart(id) > 0 ? <div> <Link to ='/Cart'>Ir al Carrito</Link> <button className="third" onClick={()=>removeItem(id)}>Modificar Compra</button></div> : <ItemCount onAdd={handleOnAdd} stock={stock}/>}</div>
             </div>
         </section>
     )

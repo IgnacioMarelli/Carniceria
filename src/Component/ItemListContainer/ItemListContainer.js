@@ -1,5 +1,4 @@
 import {useState, useEffect } from 'react'
-//import { getProducts } from '../asyncmock'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import {getDocs, collection, query, where} from 'firebase/firestore'
@@ -10,11 +9,6 @@ const ItemListContainer = (props) =>{
 
 
     useEffect(()=>{
-   //     getProducts(category).then(prods=>{
-     //       setProducts(prods)
-       // }).catch(error=>{
-         //   console.log(error)
-       // })
        const collectionRef = category ? query(collection(firestoreDb, 'products'), where('category', '==', category)) : collection(firestoreDb, 'products')
        getDocs(collectionRef).then(response =>{
            const products = response.docs.map(doc=>{

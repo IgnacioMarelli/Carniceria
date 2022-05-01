@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext} from "react"
 import CartContext from "../context/CartContext"
 import { Link } from "react-router-dom"
 import './Cart.css'
@@ -16,9 +16,8 @@ const Cart = () =>{
     return (
         <>
             <h1>Cart</h1>
-            <div>
-                {
-                    cart.map(prod=><section key={prod.id}>
+            <div className="Cart">
+                {cart.map(prod=><section key={prod.id}>
                         <div className='item_image'>
                             <img className='productoImagen' src={prod.img} alt={prod.name}/>
                         </div>
@@ -29,9 +28,9 @@ const Cart = () =>{
                             <h2>Subtotal: {prod.price*prod.quantity}</h2>
                         </div>
                         <button className="third" onClick={()=>removeItem(prod.id)}>X</button>
-                    </section>)
-                }
-                <div className="cartVacio"><button className="third" onClick={()=>clearCart()}>Vaciar Carrito</button></div>
+                    </section>)}
+                    <div className="cartVacio"><button className="third" onClick={()=>clearCart()}>Vaciar Carrito</button></div>
+                    <Link className="continue" to={'/form'}><button className="third">Finalizar compra</button></Link>    
             </div>
         </>
     )
