@@ -1,23 +1,25 @@
-import {useState, useEffect } from 'react'
+import {useState} from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-import {getDocs, collection, query, where} from 'firebase/firestore'
-import {firestoreDb} from '../../service/firebase/index'
+import { getProducts } from '../../service/firebase/firestore'
+import { useAsync } from '../../hooks/customHook'
+
 const ItemListContainer = (props) =>{
     const [products, setProducts] =useState([])
+    const [loading, setLoading]=useState(false)
     const {category}=useParams()
 
-
-    useEffect(()=>{
-       const collectionRef = category ? query(collection(firestoreDb, 'products'), where('category', '==', category)) : collection(firestoreDb, 'products')
-       getDocs(collectionRef).then(response =>{
-           const products = response.docs.map(doc=>{
-               return {id:doc.id, ...doc.data()}
-           })
-           setProducts(products)
-       })
-    }, [category])
-
+    useAsync(
+        setLoading,
+        ()=>getProducts(category),
+        setProducts,
+        ()=>console.log('error'),
+        [category]
+    )
+    
+    if(loading){
+        return <h1>Cargando...</h1>
+    }
 
     return(
         <div>

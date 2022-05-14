@@ -1,24 +1,25 @@
 import './NavBar.css'
-import CartWidget from './CartWidget/CartWidget'
+import CartWidget from '../CartWidget/CartWidget'
 import { Link } from 'react-router-dom'
-import {useState, useEffect } from 'react'
-import { firestoreDb } from '../service/firebase'
-import {getDocs, collection} from 'firebase/firestore'
-import CartContext from './context/CartContext'
+import {useState} from 'react'
+import CartContext from '../context/CartContext'
 import { useContext } from 'react'
+import { getNavbar } from '../../service/firebase/firestore'
+import { useAsync } from '../../hooks/customHook'
 
 const NavBar = ()=> {
     const [categories, setCategories] =useState([])
+    const [loading, setLoading] = useState(true)
     const {cart}= useContext(CartContext)
 
-    useEffect(()=>{
-        getDocs(collection(firestoreDb, 'categories')).then(response=>{
-            const categories = response.docs.map(doc=>{
-                return { id:doc.id, ...doc.data()}
-            }) 
-            setCategories(categories)
-        })
-    }, [])
+    useAsync(
+        setLoading,
+        ()=>getNavbar(),
+        setCategories,
+        ()=>console.log('error en la NavBar'),
+        []
+    )
+
 
     return <nav>
         <Link to={`/`} className='Logo'>Carnes Avenida</Link>

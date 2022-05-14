@@ -3,12 +3,12 @@ import {getFirestore} from 'firebase/firestore'
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDa1U3NBViEAEjTtvOlys4nkLurgK4uRnE",
-  authDomain: "carniceria-2d52e.firebaseapp.com",
-  projectId: "carniceria-2d52e",
-  storageBucket: "carniceria-2d52e.appspot.com",
-  messagingSenderId: "920224787723",
-  appId: "1:920224787723:web:ecadf5ee7f20ecfcdb860e"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase

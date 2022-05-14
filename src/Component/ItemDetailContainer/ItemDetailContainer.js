@@ -1,24 +1,25 @@
 import {useState, useEffect } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
-import { firestoreDb } from '../../service/firebase'
-import { getDoc, doc } from 'firebase/firestore'
+import { useAsync } from '../../hooks/customHook'
+import { getDetail } from '../../service/firebase/firestore'
 
-
-const ItemListDetail = ({setCart}) =>{
+const ItemListDetail = ({}) =>{
     const [products, setproducts] =useState()
     const [loading, setLoading] = useState(true)
 
     const {productId} = useParams()
 
-    useEffect(()=>{
-       getDoc(doc(firestoreDb, 'products', productId)).then(response=>{
-           const product ={ id: response.id, ...response.data()}
-           setproducts(product)
-       }).finally(()=>{
-           setLoading(false)
-       })
-    }, [])
+
+    useAsync(
+        setLoading,
+        () => getDetail(productId),
+        setproducts,
+        () => console.log('Error en ItemDetailContainer'),
+        []
+    )
+    
+    
     
     return (
         <div className="Detalle" >

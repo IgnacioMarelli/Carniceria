@@ -29,8 +29,8 @@ const Cart = () =>{
                         </div>
                         <button className="third" onClick={()=>removeItem(prod.id)}>X</button>
                     </section>)}
-                    <div className="cartVacio"><button className="third" onClick={()=>clearCart()}>Vaciar Carrito</button></div>
-                    <Link className="continue" to={'/form'}><button className="third">Finalizar compra</button></Link>    
+                    <div className="cartVacio"><button className="third" onClick={clearCart}>Vaciar Carrito</button></div>
+                    <div className="cartVacio"><Link className="continue" to={'/form'}><button className="third">Finalizar compra</button></Link></div>    
             </div>
         </>
     )

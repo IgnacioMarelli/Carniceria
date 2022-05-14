@@ -7,18 +7,29 @@ const Form = ()=>{
     const {cart, getTotal, clearCart} = useContext(CartContext)
     const [loading, setLoading] = useState(false)
     const [datos, setDatos] = useState('')
+    const [botonDeshabilitado, setBotonDeshabilitado] = useState(true)
 
     const handleSubmit =(e)=>{
         e.preventdefault()
     }
+    const handleOnBlur = () =>  {
+        if (datos.confirmacion !== datos.mail ) {
+            alert('Debe confirmar el mail correctamente')
+        }
+    }
+
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
         setDatos(vals => ({ ...vals, [name]: value }))
+        if (value=='') {
+            setBotonDeshabilitado(true)
+        }else{
+            setBotonDeshabilitado(false)
+        }
     }
     const crearOrden= ()=>{     
 
-            setDatos(false)
             setLoading(true)
             const objPedido ={
                 items: cart,
@@ -48,8 +59,8 @@ const Form = ()=>{
                     })
                 }).then(()=>{
                     if(sinStock.length=== 0){
-                        const collectionRef = collection(firestoreDb, 'pedidos')
-                        return addDoc(collectionRef, objPedido)
+                        const pedidoCollectionRef = collection(firestoreDb, 'pedidos')
+                        return addDoc(pedidoCollectionRef, objPedido)
                     }else{
                         return Promise.reject()
                     }
@@ -69,20 +80,24 @@ const Form = ()=>{
     }
     return(
         <>
-            <form className="cartVacio container" onSubmit={handleSubmit}>
+            <form className="container" onSubmit={handleSubmit}>
             <div className="form-group">
                 <label for="exampleInputEmail1">Email</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail" onChange={handleChange}  placeholder="email@hotmail.com"/>
+                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail" onChange={handleChange} placeholder="email@hotmail.com"/>
+            </div>
+            <div className="form-group">
+                <label for="exampleInputEmail1">Confirma Email</label>
+                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="confirmacion" onChange={handleChange} onBlur={handleOnBlur} placeholder="email@hotmail.com"/>
             </div>
             <div className="form-group">
                 <label for="exampleInputPassword1">Nombre</label>
-                <input type="text" className="form-control" placeholder="Nombre" name="nombre" onChange={handleChange}/>
+                <input type="text" className="form-control" placeholder="Nombre" name="nombre" onChange={handleChange} />
             </div>
             <div className="form-group">
                 <label for="exampleInputPassword1">Teléfono</label>
                 <input type="number" className="form-control" name="tel" placeholder="Teléfono"  onChange={handleChange}/>
             </div>
-            <button type="submit" className=" third btn btn-primary" onClick={crearOrden}>Comprar</button>
+            {botonDeshabilitado ? <h2>Por favor complete los datos</h2> : <div className="cartVacio"><button type="submit" className=" third btn btn-primary" onClick={crearOrden}>Comprar</button></div>}
             </form>
         </>
     )
