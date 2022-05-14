@@ -153,7 +153,8 @@ parametro de la base de datos \"firestoreDb\"
 
 collectionRef= que encuadra la colleción sobre la que se actuara
 
-sinStock= que contiene un array vacío el que luego utilizaremos para avisar que no queda suficiente stock
+sinStock= que contiene un array vacío el que luego utilizaremos para
+avisar que no queda suficiente stock
 
 Continua la función con \"getDocs\" utilizando el filtro query que
 selecciona a collectionRef y where que establece que se actuara sobre
@@ -166,9 +167,24 @@ utilizo un forEach, para que con cada documento forme una constante
 etc.), otra constante que contendra la cantidad del producto
 seleccionado a traves de la función find() aplicada a cart y señalando
 la cantidad con un \".quantity\", y luego utilizar un condicional que
-defina que si el stock del documento extraído por getDocs es mayor o igual a la cantidad de productos seleccionados por el cliente, con batch.update se actualizara el stock de los productos, restandole la cantidad elegida, y en caso contrario de que el stock sea menor, se incorpore a la constante sin Stock el producto que no tiene el suficiente stock. Terminada la verificación, con un nuevo then,
-nuevamente pongo filtros con condiciones: si la constante \"sinStock\" esta vacía creo una nueva constante (pedidoCollectionRef) que se define como la colección \"perdidos\" dentro de \"firestoreDb\", utilizando la funcion collection() Una vez, que verifiquemos que sí hay stock,  utilizo la funcion addDoc para que se cree un nuevo docuemnto en
+defina que si el stock del documento extraído por getDocs es mayor o
+igual a la cantidad de productos seleccionados por el cliente, con
+batch.update se actualizara el stock de los productos, restandole la
+cantidad elegida, y en caso contrario de que el stock sea menor, se
+incorpore a la constante sin Stock el producto que no tiene el
+suficiente stock. Terminada la verificación, con un nuevo then,
+nuevamente pongo filtros con condiciones: si la constante \"sinStock\"
+esta vacía creo una nueva constante (pedidoCollectionRef) que se define
+como la colección \"perdidos\" dentro de \"firestoreDb\", utilizando la
+funcion collection() Una vez, que verifiquemos que sí hay stock, utilizo
+la funcion addDoc para que se cree un nuevo docuemnto en
 \"pedidoCollectionRef\" que contenga la constante que nombre al
-principio \"objPedido\". En caso de que alguno de los productos carezca de stock pongo un reject ademas de un promise . reject Si esta todo correcto entonces con batch.commit actualizo el stock y pongo un mensaje al cliente con alert el \"ID\" de la orden. Para calzar los errores, utilizo el catch, e identifico lso errores con un console.log y por ultimo, con un finally seteo \"false\" el loading para que se de por finalizado el estado de carga. Una vez finalizado todo este recorrido.
+principio \"objPedido\". En caso de que alguno de los productos carezca
+de stock pongo un reject ademas de un promise . reject Si esta todo
+correcto entonces con batch.commit actualizo el stock y pongo un mensaje
+al cliente con alert el \"ID\" de la orden. Para calzar los errores,
+utilizo el catch, e identifico lso errores con un console.log y por
+ultimo, con un finally seteo \"false\" el loading para que se de por
+finalizado el estado de carga. Una vez finalizado todo este recorrido
 finalizo la funcion con un clearCart, para evitar que si desea una nueva
 compra, el cart continue en el estado anterior.
