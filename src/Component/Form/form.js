@@ -82,19 +82,19 @@ const Form = ()=>{
         <>
             <form className="container" onSubmit={handleSubmit}>
             <div className="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail" onChange={handleChange} placeholder="email@hotmail.com"/>
+                <label>Email</label>
+                <input type="email" className="form-control" aria-describedby="emailHelp" name="mail" onChange={handleChange} placeholder="email@hotmail.com"/>
             </div>
             <div className="form-group">
-                <label for="exampleInputEmail1">Confirma Email</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="confirmacion" onChange={handleChange} onBlur={handleOnBlur} placeholder="email@hotmail.com"/>
+                <label>Confirma Email</label>
+                <input type="email" className="form-control"  aria-describedby="emailHelp" name="confirmacion" onChange={handleChange} onBlur={handleOnBlur} placeholder="email@hotmail.com"/>
             </div>
             <div className="form-group">
-                <label for="exampleInputPassword1">Nombre</label>
+                <label >Nombre</label>
                 <input type="text" className="form-control" placeholder="Nombre" name="nombre" onChange={handleChange} />
             </div>
             <div className="form-group">
-                <label for="exampleInputPassword1">Teléfono</label>
+                <label >Teléfono</label>
                 <input type="number" className="form-control" name="tel" placeholder="Teléfono"  onChange={handleChange}/>
             </div>
             {botonDeshabilitado ? <h2>Por favor complete los datos</h2> : <div className="cartVacio"><button type="submit" className=" third btn btn-primary" onClick={crearOrden}>Comprar</button></div>}
