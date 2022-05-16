@@ -190,4 +190,4 @@ finalizo la funcion con un clearCart, para evitar que si desea una nueva
 compra, el cart continue en el estado anterior.
 
 Gif que ilustra como comprar:
-
+![image](https://raw.githubusercontent.com/IgnacioMarelli/Carniceria/master/public/Media/video.gif)
