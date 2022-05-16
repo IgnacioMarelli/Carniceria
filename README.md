@@ -188,3 +188,6 @@ ultimo, con un finally seteo \"false\" el loading para que se de por
 finalizado el estado de carga. Una vez finalizado todo este recorrido
 finalizo la funcion con un clearCart, para evitar que si desea una nueva
 compra, el cart continue en el estado anterior.
+
+Gif que ilustra como comprar:
+
