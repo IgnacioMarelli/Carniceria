@@ -1,7 +1,7 @@
 import { getDocs, writeBatch, query, where, collection, documentId, addDoc} from 'firebase/firestore' 
 import { firestoreDb } from '../../service/firebase'
 import { useContext, useState } from 'react'
-import CartContext from "../context/CartContext"
+import CartContext from "../../context/CartContext"
 
 const Form = ()=>{    
     const {cart, getTotal, clearCart} = useContext(CartContext)

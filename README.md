@@ -189,5 +189,7 @@ finalizado el estado de carga. Una vez finalizado todo este recorrido
 finalizo la funcion con un clearCart, para evitar que si desea una nueva
 compra, el cart continue en el estado anterior.
 
+Todos los productos, como bien lo señalé, vienen de la base de datos de mi proyecto de firebase, lo cual presentar las credenciales como aparecen en github es inseguro. Para otorgarle seguridad, encripto el codigo con un archivo .env, que importo en el archivo index.js. 
+
 Gif que ilustra como comprar:
 ![image](https://raw.githubusercontent.com/IgnacioMarelli/Carniceria/master/public/Media/video.gif)

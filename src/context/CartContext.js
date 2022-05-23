@@ -16,14 +16,22 @@ export const CartContextProvider = ({children})=>{
         return cart.some(prod=> prod.id === id)
     }    
     
-    const addItem=(productToAdd)=>{
+    const addItem=(productToAdd, quantity)=>{
         if (!isInCart(productToAdd.id)) {
             setCart([...cart, productToAdd])
         } else {
-            const prodsRepetido= cart.filter(producto => producto.id === productToAdd.id)
-            prodsRepetido.quantinty += productToAdd.quantinty
-            const newCart = [...cart];
-            setCart(newCart);
+            const prodsRepetido= cart.map(prod=>{
+                if (prod.id === productToAdd.id) {
+                    const prodRepetido= {
+                        ...prod,
+                        quantity:quantity
+                    }
+                    return prodRepetido
+                } else {
+                    return prod
+                }
+            })
+            setCart(prodsRepetido)
         }
     }
 
